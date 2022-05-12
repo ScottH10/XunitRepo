@@ -37,13 +37,25 @@ steps:
 
 
 
+# - task: VSBuild@1
+
+#   inputs:
+
+#     solution: '$(solution)'
+
+#     platform: '$(buildPlatform)'
+
+#     configuration: '$(buildConfiguration)'
+
+
+
 - task: DotNetCoreCLI@2
 
   inputs:
 
     command: 'build'
 
-    projects: '*.csproj'
+    projects: 'CrisXUnitTests\*.csproj'
 
 
 
@@ -53,4 +65,24 @@ steps:
 
     command: 'test'
 
-    projects: '*.csproj'
+    projects: 'CrisXUnitTests\*.csproj'
+
+
+
+# - task: VSTest@2
+
+#   inputs:
+
+#     testSelector: 'testAssemblies'
+
+#     testAssemblyVer2: |
+
+#       **\CrisXUnitTests.dll
+
+#       !**\*TestAdapter.dll
+
+#     searchFolder: '$(System.DefaultWorkingDirectory)'
+
+#     platform: '$(buildPlatform)'
+
+#     configuration: '$(buildConfiguration)'
