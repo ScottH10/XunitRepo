@@ -37,28 +37,20 @@ steps:
 
 
 
-- task: VSBuild@1
+- task: DotNetCoreCLI@2
 
   inputs:
 
-    solution: '$(solution)'
+    command: 'build'
 
-    platform: '$(buildPlatform)'
-
-    configuration: '$(buildConfiguration)'
+    projects: '*.csproj'
 
 
 
-- task: VSTest@2
+- task: DotNetCoreCLI@2
 
   inputs:
 
-    testSelector: 'testAssemblies'
+    command: 'test'
 
-    testAssemblyVer2: '**\CrisXUnitTests.dll'
-
-    searchFolder: '$(System.DefaultWorkingDirectory)'
-
-    platform: '$(buildPlatform)'
-
-    configuration: '$(buildConfiguration)'
+    projects: '*.csproj'
